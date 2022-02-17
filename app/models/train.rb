@@ -1,4 +1,5 @@
 class Train < ApplicationRecord
+<<<<<<< HEAD
   validates :number, presence: true
 
   belongs_to :route, class_name: 'Route', foreign_key: :route_id
@@ -21,4 +22,6 @@ class Train < ApplicationRecord
     end
     count
   end
+=======
+>>>>>>> using scaffold for creating CRUD for railway_stations and trains
 end

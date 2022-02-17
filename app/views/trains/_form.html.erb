@@ -1,11 +1,26 @@
 <%= form_with(model: train) do |form| %>
+<<<<<<< HEAD
   <%= render 'common/error', resource: @train %>
+=======
+  <% if train.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(train.errors.count, "error") %> prohibited this train from being saved:</h2>
+
+      <ul>
+        <% train.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+>>>>>>> using scaffold for creating CRUD for railway_stations and trains
 
   <div class="field">
     <%= form.label :number %>
     <%= form.text_field :number %>
   </div>
 
+<<<<<<< HEAD
   <div class="field">
     <%= form.label :current_station %>
     <%= form.collection_select :railway_station_id, RailwayStation.all, :id, :title %>
@@ -16,6 +31,8 @@
     <%= form.collection_select :route_id, Route.all, :id, :title %>
   </div>
 
+=======
+>>>>>>> using scaffold for creating CRUD for railway_stations and trains
   <div class="actions">
     <%= form.submit %>
   </div>

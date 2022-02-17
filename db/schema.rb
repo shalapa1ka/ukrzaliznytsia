@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_02_23_105148) do
+=======
+ActiveRecord::Schema.define(version: 2022_02_17_154212) do
+>>>>>>> using scaffold for creating CRUD for railway_stations and trains
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "carriages", force: :cascade do |t|
     t.integer "kind"
     t.integer "top_seats"
@@ -25,12 +30,15 @@ ActiveRecord::Schema.define(version: 2022_02_23_105148) do
     t.index ["train_id"], name: "index_carriages_on_train_id"
   end
 
+=======
+>>>>>>> using scaffold for creating CRUD for railway_stations and trains
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
   create_table "railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
@@ -51,10 +59,13 @@ ActiveRecord::Schema.define(version: 2022_02_23_105148) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+=======
+>>>>>>> using scaffold for creating CRUD for railway_stations and trains
   create_table "trains", force: :cascade do |t|
     t.string "number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
     t.bigint "railway_station_id"
     t.bigint "route_id"
     t.index ["railway_station_id"], name: "index_trains_on_railway_station_id"
@@ -65,6 +76,8 @@ ActiveRecord::Schema.define(version: 2022_02_23_105148) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+=======
+>>>>>>> using scaffold for creating CRUD for railway_stations and trains
   end
 
 end
