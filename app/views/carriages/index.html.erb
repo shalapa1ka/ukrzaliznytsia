@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Carriages</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <%= render @carriage %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Carriage', new_carriage_path %>
+<br>
+<%= link_to 'Main', welcome_index_path %>
