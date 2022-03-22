@@ -1,7 +1,19 @@
 class Carriage < ApplicationRecord
-  belongs_to :train
+  TYPES = %w(CoupeCarriage CVCarriage EconomyCarriage SeatCarriage)
+  belongs_to :train, dependent: :delete
 
-  validates :top_seats, :bottom_seats, :kind, presence: true
+  validates :train, :type, :number, presence: true
+  validates :number, uniqueness: { scope: :train_id }
 
-  enum kind: %i[lux economy]
+  before_validation :set_number
+
+  private
+
+  def set_number
+    self.number ||= self.max_number + 1
+  end
+
+  def max_number
+    train.carriages.pluck(:number).max || 0
+  end
 end
