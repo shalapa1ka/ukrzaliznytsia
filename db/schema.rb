@@ -11,22 +11,30 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_02_23_105148) do
 =======
 ActiveRecord::Schema.define(version: 2022_02_17_154212) do
 >>>>>>> using scaffold for creating CRUD for railway_stations and trains
+=======
+ActiveRecord::Schema.define(version: 2022_03_21_144805) do
+>>>>>>> rebase db
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
 <<<<<<< HEAD
   create_table "carriages", force: :cascade do |t|
-    t.integer "kind"
     t.integer "top_seats"
     t.integer "bottom_seats"
     t.bigint "train_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "side_bottom_seats"
+    t.integer "side_top_seats"
+    t.integer "number"
+    t.string "type"
+    t.integer "seating"
     t.index ["train_id"], name: "index_carriages_on_train_id"
   end
 
@@ -42,6 +50,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_154212) do
   create_table "railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
+    t.integer "station_index"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -68,6 +77,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_154212) do
 <<<<<<< HEAD
     t.bigint "railway_station_id"
     t.bigint "route_id"
+    t.boolean "reverse"
     t.index ["railway_station_id"], name: "index_trains_on_railway_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
   end
