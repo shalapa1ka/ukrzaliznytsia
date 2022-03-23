@@ -4,6 +4,7 @@
 
 <table>
   <thead>
+<<<<<<< HEAD
   <tr>
     <th>Title</th>
     <th colspan="3"></th>
@@ -12,6 +13,23 @@
 
   <tbody>
   <%= render @railway_stations %>
+=======
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @railway_stations.each do |railway_station| %>
+      <tr>
+        <td><%= railway_station.title %></td>
+        <td><%= link_to 'Show', railway_station %></td>
+        <td><%= link_to 'Edit', edit_railway_station_path(railway_station) %></td>
+        <td><%= link_to 'Destroy', railway_station, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+>>>>>>> using scaffold for creating CRUD for railway_stations and trains
   </tbody>
 </table>
 

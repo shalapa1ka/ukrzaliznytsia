@@ -4,6 +4,7 @@
   <strong>Title:</strong>
   <%= @railway_station.title %>
 </p>
+<<<<<<< HEAD
 <p>
   <strong>Trains:</strong>
   <% if @railway_station.trains.empty? %>
@@ -16,6 +17,8 @@
   <% end %>
 <% end %>
 </p>
+=======
+>>>>>>> using scaffold for creating CRUD for railway_stations and trains
 
 <%= link_to 'Edit', edit_railway_station_path(@railway_station) %> |
 <%= link_to 'Back', railway_stations_path %>
