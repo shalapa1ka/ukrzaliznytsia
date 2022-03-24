@@ -1,21 +1,40 @@
 <p id="notice"><%= notice %></p>
 
+<p><strong><%= @carriage.type %></strong></p>
+
 <p>
-  <strong>Kind: </strong>
-  <%= @carriage.kind %>
-</p>
-<p>
-  <strong>Train: </strong>
-  <%= @carriage.train.number %>
-</p>
-<p>
-  <strong>Top seats: </strong>
-  <%= @carriage.top_seats %>
-</p>
-<p>
-  <strong>Bottom seats: </strong>
-  <%= @carriage.bottom_seats %>
+  <strong>Number:</strong>
+  <%= @carriage.number %>
 </p>
 
-<%= link_to 'Edit', edit_carriage_path(@carriage) %> |
-<%= link_to 'Back', carriages_path %>
+<% if @carriage.top_seats %>
+  <p>
+    <strong>Top Seats</strong>
+    <%= @carriage.top_seats %>
+  </p>
+<% end %>
+<% if @carriage.bottom_seats %>
+  <p>
+    <strong>Bottom Seats</strong>
+    <%= @carriage.bottom_seats %>
+  </p>
+<% end %>
+<% if @carriage.side_top_seats %>
+  <p>
+    <strong>Side Top Seats</strong>
+    <%= @carriage.side_top_seats %>
+  </p>
+<% end %>
+<% if @carriage.side_bottom_seats %>
+  <p>
+    <strong>Side Bottom Seats</strong>
+    <%= @carriage.side_bottom_seats %>
+  </p>
+<% end %>
+<% if @carriage.seating %>
+  <p>
+    <strong>Seating Seats</strong>
+    <%= @carriage.seating %>
+  </p>
+<% end %>
+<%= link_to 'Back', train_path(@carriage.train) %>
