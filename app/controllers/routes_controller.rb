@@ -5,8 +5,7 @@ class RoutesController < ApplicationController
     @routes = Route.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @route = Route.new
@@ -28,7 +27,7 @@ class RoutesController < ApplicationController
     if @route.update(route_params)
       redirect_to @route
     else
-      render :new
+      render :edit
     end
   end
 
