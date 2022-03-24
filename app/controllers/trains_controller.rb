@@ -1,5 +1,5 @@
 class TrainsController < ApplicationController
-  before_action :set_train, only: %i[show edit update destroy]
+  before_action :find_train, only: %i[show edit update destroy]
 
   def index
     @trains = Train.all
@@ -32,16 +32,16 @@ class TrainsController < ApplicationController
   end
 
   def destroy
-    redirect_to trains_url if @train.delete
+    redirect_to trains_path if @train.destroy
   end
 
   private
 
-  def set_train
+  def find_train
     @train = Train.find(params[:id])
   end
 
   def train_params
-    params.require(:train).permit(:number, :route_id, :railway_station_id)
+    params.require(:train).permit(:number, :route_id, :railway_station_id, :reverse)
   end
 end
