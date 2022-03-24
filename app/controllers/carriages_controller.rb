@@ -13,7 +13,7 @@ class CarriagesController < ApplicationController
     if @carriage.save
       redirect_to @train, note: 'Carriage successfully created!'
     else
-      redirect_to new_train_carriage_path(@train)
+      render :new
     end
   end
 
