@@ -6,6 +6,19 @@
 </p>
 
 <p>
+  <strong>Stations:</strong>
+  <% if @route.railway_stations.empty? %>
+    Not specified
+  <% else %>
+    <% @route.railway_stations.ordered.each do |railway_stations| %>
+    <ul>
+      <li><%= railway_stations.title %></li>
+    </ul>
+  <% end %>
+<% end %>
+</p>
+
+<p>
   <strong>Trains:</strong>
   <% if @route.trains.empty? %>
     Not specified
