@@ -36,43 +36,43 @@
   </div>
 <% end %>
 
-<script type="text/javascript" charset="utf-8">
-    document.addEventListener('turbolinks:load', function () {
-        let select = document.getElementById('carriage_type')
-        let type = null
-        let els = document.getElementsByClassName('seats')
-        hide()
-        select.addEventListener('change', function () {
-            hide()
-            show()
-        })
+<script type="text/javascript">
+    let seats = {
+        top_seats: $('.top-seats'),
+        side_top_seats: $('.side-top-seats'),
+        bottom_seats: $('.bottom-seats'),
+        side_bottom_seats: $('.side-bottom-seats'),
+        seating: $('.seating')
+    }
+    all_input_fields = $('.seats')
 
-        function hide() {
-            for (let i = 0; i < els.length; i++) {
-                els.item(i).classList.add('hide')
-            }
-        }
-
-        function show() {
-            type = select.options[select.selectedIndex].value
-            switch (type) {
-                case 'CoupeCarriage':
-                    document.getElementsByClassName('top-seats').item(0).classList.toggle('hide')
-                    document.getElementsByClassName('bottom-seats').item(0).classList.toggle('hide')
-                    break;
-                case 'CVCarriage':
-                    document.getElementsByClassName('bottom-seats').item(0).classList.toggle('hide')
-                    break;
-                case 'EconomyCarriage':
-                    document.getElementsByClassName('top-seats').item(0).classList.toggle('hide')
-                    document.getElementsByClassName('bottom-seats').item(0).classList.toggle('hide')
-                    document.getElementsByClassName('side-top-seats').item(0).classList.toggle('hide')
-                    document.getElementsByClassName('side-bottom-seats').item(0).classList.toggle('hide')
-                    break;
-                case 'SeatCarriage':
-                    document.getElementsByClassName('seating').item(0).classList.toggle('hide')
-                    break;
-            }
-        }
+    $(document).on('turbolinks:load', function () {
+        all_input_fields.hide()
     })
+
+    $('#carriage_type').change( function (e) {
+        all_input_fields.hide();
+        show_carriage_attr(e.target.value, seats);
+    });
+
+    function show_carriage_attr(type, seats) {
+        switch (type) {
+            case 'CoupeCarriage':
+                seats['top_seats'].show();
+                seats['bottom_seats'].show();
+                break;
+            case 'CVCarriage':
+                seats['side_top_seats'].show()
+                break;
+            case 'EconomyCarriage':
+                seats['top_seats'].show()
+                seats['bottom_seats'].show()
+                seats['side_top_seats'].show()
+                seats['side_bottom_seats'].show()
+                break;
+            case 'SeatCarriage':
+                seats['seating'].show()
+                break;
+        }
+    }
 </script>
