@@ -1,5 +1,5 @@
 class Carriage < ApplicationRecord
-  TYPES = %w(CoupeCarriage CVCarriage EconomyCarriage SeatCarriage)
+  TYPES = %w(------------- CoupeCarriage CVCarriage EconomyCarriage SeatCarriage)
   belongs_to :train, dependent: :delete
 
   validates :train, :type, :number, presence: true

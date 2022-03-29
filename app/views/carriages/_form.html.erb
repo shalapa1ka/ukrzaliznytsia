@@ -3,30 +3,30 @@
 
   <div class="field">
     <%= form.label :type %><br>
-    <%= form.select :type, Carriage::TYPES %>
+    <%= form.select :type, Carriage::TYPES, selected: '-------------' %>
   </div>
 
-  <div class="field">
+  <div class="field top-seats seats">
     <%= form.label :top_seats %><br>
     <%= form.number_field :top_seats %>
   </div>
 
-  <div class="field">
+  <div class="field bottom-seats seats">
     <%= form.label :bottom_seats %><br>
     <%= form.number_field :bottom_seats %>
   </div>
 
-  <div class="field">
+  <div class="field side-top-seats seats">
     <%= form.label :side_top_seats %><br>
     <%= form.number_field :side_top_seats %>
   </div>
 
-  <div class="field">
+  <div class="field side-bottom-seats seats">
     <%= form.label :side_bottom_seats %><br>
     <%= form.number_field :side_bottom_seats %>
   </div>
 
-  <div class="field">
+  <div class="field seating seats">
     <%= form.label :seating %><br>
     <%= form.number_field :seating %>
   </div>
@@ -35,3 +35,44 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+    document.addEventListener('turbolinks:load', function () {
+        let select = document.getElementById('carriage_type')
+        let type = null
+        let els = document.getElementsByClassName('seats')
+        hide()
+        select.addEventListener('change', function () {
+            hide()
+            show()
+        })
+
+        function hide() {
+            for (let i = 0; i < els.length; i++) {
+                els.item(i).classList.add('hide')
+            }
+        }
+
+        function show() {
+            type = select.options[select.selectedIndex].value
+            switch (type) {
+                case 'CoupeCarriage':
+                    document.getElementsByClassName('top-seats').item(0).classList.toggle('hide')
+                    document.getElementsByClassName('bottom-seats').item(0).classList.toggle('hide')
+                    break;
+                case 'CVCarriage':
+                    document.getElementsByClassName('bottom-seats').item(0).classList.toggle('hide')
+                    break;
+                case 'EconomyCarriage':
+                    document.getElementsByClassName('top-seats').item(0).classList.toggle('hide')
+                    document.getElementsByClassName('bottom-seats').item(0).classList.toggle('hide')
+                    document.getElementsByClassName('side-top-seats').item(0).classList.toggle('hide')
+                    document.getElementsByClassName('side-bottom-seats').item(0).classList.toggle('hide')
+                    break;
+                case 'SeatCarriage':
+                    document.getElementsByClassName('seating').item(0).classList.toggle('hide')
+                    break;
+            }
+        }
+    })
+</script>
