@@ -1,35 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div>
   <strong>Title:</strong>
   <%= @route.title %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Stations:</strong>
   <% if @route.railway_stations.empty? %>
     Not specified
   <% else %>
-    <% @route.railway_stations.ordered.each do |railway_stations| %>
-    <ul>
-      <li><%= railway_stations.title %></li>
-    </ul>
-  <% end %>
-<% end %>
-</p>
+    <table>
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Position</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @route.railway_stations.ordered.each do |station| %>
+        <tr>
+          <td> <%= station.title %> </td>
+          <td>
+            <%= form_tag update_position_railway_station_path(station), method: :patch do %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= number_field_tag :position, station.position_in(@route) %>
+              <%= submit_tag :Apply %>
 
-<p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+
+<div>
   <strong>Trains:</strong>
   <% if @route.trains.empty? %>
     Not specified
   <% else %>
     <% @route.trains.each do |train| %>
-    <ul>
-      <li><%= train.number %></li>
-    </ul>
+      <ul>
+        <li><%= train.number %></li>
+      </ul>
+    <% end %>
   <% end %>
-<% end %>
-</p>
+</div>
 
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>

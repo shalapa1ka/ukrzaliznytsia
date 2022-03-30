@@ -4,4 +4,12 @@ class Route < ApplicationRecord
   has_many :trains
   has_many :railway_stations_routes
   has_many :railway_stations, through: :railway_stations_routes
+
+  before_validation :set_title
+
+  private
+
+  def set_title
+    self.title = "#{railway_stations.ordered.first.title} - #{railway_stations.ordered.last.title}"
+  end
 end

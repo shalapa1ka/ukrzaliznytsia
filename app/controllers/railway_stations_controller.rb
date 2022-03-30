@@ -1,5 +1,5 @@
 class RailwayStationsController < ApplicationController
-  before_action :find_railway_station, only: %i[show edit update destroy]
+  before_action :find_railway_station, only: %i[show edit update destroy update_position]
 
   def index
     @railway_stations = RailwayStation.all
@@ -34,6 +34,13 @@ class RailwayStationsController < ApplicationController
 
   def destroy
     redirect_to railway_stations_url if @railway_station.delete
+  end
+
+  def update_position
+    @route = Route.find params[:route_id]
+    @railway_station.update_position(@route, params[:position])
+    @route.save
+    redirect_to @route
   end
 
   private
