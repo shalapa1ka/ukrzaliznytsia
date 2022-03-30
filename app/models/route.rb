@@ -10,6 +10,8 @@ class Route < ApplicationRecord
   private
 
   def set_title
-    self.title = "#{railway_stations.ordered.first.title} - #{railway_stations.ordered.last.title}"
+    if railway_stations.size >= 2
+      self.title = "#{railway_stations.ordered.first.title} - #{railway_stations.ordered.last.title}"
+    end
   end
 end
