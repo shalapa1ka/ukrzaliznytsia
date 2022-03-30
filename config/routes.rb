@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :railway_stations do
     patch :update_position, on: :member
   end
-  resources :routes
+  resources :routes do
+    post :add_railway_station, on: :member
+  end
   resources :carriages, only: [:show]
 
   get 'welcome/index'

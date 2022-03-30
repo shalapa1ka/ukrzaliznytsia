@@ -26,13 +26,18 @@
               <%= hidden_field_tag :route_id, @route.id %>
               <%= number_field_tag :position, station.position_in(@route) %>
               <%= submit_tag :Apply %>
-
             <% end %>
           </td>
         </tr>
       <% end %>
       </tbody>
     </table>
+  <% end %>
+  <%= form_tag add_railway_station_route_path, method: :post do %>
+    <%= hidden_field_tag :route_id, @route.id %>
+    <%= select_tag :railway_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title) %>
+    <%= number_field_tag :position %>
+    <%= submit_tag :Add %>
   <% end %>
 </div>
 
