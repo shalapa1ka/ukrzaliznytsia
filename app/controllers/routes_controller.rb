@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-  before_action :set_route_params, only: %i[show edit update destroy]
+  before_action :find_route, only: %i[show edit update destroy]
 
   def index
     @routes = Route.all
@@ -37,7 +37,7 @@ class RoutesController < ApplicationController
 
   private
 
-  def set_route_params
+  def find_route
     @route = Route.find(params[:id])
   end
 

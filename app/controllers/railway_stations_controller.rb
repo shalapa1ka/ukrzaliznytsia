@@ -1,5 +1,5 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: %i[show edit update destroy]
+  before_action :find_railway_station, only: %i[show edit update destroy]
 
   def index
     @railway_stations = RailwayStation.all
@@ -38,7 +38,7 @@ class RailwayStationsController < ApplicationController
 
   private
 
-  def set_railway_station
+  def find_railway_station
     @railway_station = RailwayStation.find(params[:id])
   end
 
