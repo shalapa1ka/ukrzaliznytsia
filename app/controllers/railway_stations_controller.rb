@@ -33,7 +33,7 @@ class RailwayStationsController < ApplicationController
   end
 
   def destroy
-    redirect_to railway_stations_url if @railway_station.delete
+    redirect_to railway_stations_url if @railway_station.destroy
   end
 
   def update_position

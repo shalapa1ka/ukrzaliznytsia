@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :routes do
     post :add_railway_station, on: :member
+    delete :remove_railway_station, on: :member
   end
   resources :carriages, only: [:show]
 

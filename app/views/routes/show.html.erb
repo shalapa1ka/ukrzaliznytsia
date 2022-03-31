@@ -14,7 +14,7 @@
       <thead>
       <tr>
         <th>Title</th>
-        <th>Position</th>
+        <th colspan="2">Position</th>
       </tr>
       </thead>
       <tbody>
@@ -28,11 +28,19 @@
               <%= submit_tag :Apply %>
             <% end %>
           </td>
+          <td>
+            <%= form_tag remove_railway_station_route_path(@route), method: :delete do %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= hidden_field_tag :station_id, station.id %>
+              <%= submit_tag :Remove %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
       </tbody>
     </table>
   <% end %>
+  <hr>
   <%= form_tag add_railway_station_route_path, method: :post do %>
     <%= hidden_field_tag :route_id, @route.id %>
     <%= select_tag :railway_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title) %>

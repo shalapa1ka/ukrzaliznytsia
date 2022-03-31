@@ -3,7 +3,7 @@ class RailwayStation < ApplicationRecord
 
   has_many :trains
   has_many :tickets
-  has_many :railway_stations_routes
+  has_many :railway_stations_routes, dependent: :destroy
   has_many :routes, through: :railway_stations_routes
 
   scope :ordered, -> {
@@ -12,7 +12,7 @@ class RailwayStation < ApplicationRecord
   }
 
   def update_position(route, position)
-    station_route =  station_route(route)
+    station_route = station_route(route)
     station_route.update(position: position) if station_route
   end
 
@@ -23,6 +23,6 @@ class RailwayStation < ApplicationRecord
   protected
 
   def station_route(route)
-    @station_route ||=  railway_stations_routes.where(route: route).first
+    @station_route ||= railway_stations_routes.where(route: route).first
   end
 end
