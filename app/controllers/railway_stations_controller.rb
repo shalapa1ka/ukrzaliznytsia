@@ -17,7 +17,7 @@ class RailwayStationsController < ApplicationController
     @railway_station = RailwayStation.new(railway_station_params)
 
     if @railway_station.save
-      redirect_to @railway_station
+      redirect_to @railway_station, notice: 'Railway Station successfully created!'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class RailwayStationsController < ApplicationController
   end
 
   def destroy
-    redirect_to railway_stations_url if @railway_station.destroy
+    redirect_to railway_stations_url, notice: 'Railway Station successfully deleted!' if @railway_station.destroy
   end
 
   def update_position

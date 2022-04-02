@@ -17,7 +17,7 @@ class TrainsController < ApplicationController
     @train = Train.new(train_params)
 
     if @train.save
-      redirect_to @train
+      redirect_to @train, notice: 'Train successfully created!'
     else
       render :new
     end
@@ -25,14 +25,14 @@ class TrainsController < ApplicationController
 
   def update
     if @train.update(train_params)
-      redirect_to @train
+      redirect_to @train, notice: 'Train successfully updated!'
     else
       render :new
     end
   end
 
   def destroy
-    redirect_to trains_path if @train.destroy
+    redirect_to trains_path, notice: 'Train successfully deleted!' if @train.destroy
   end
 
   private

@@ -11,7 +11,7 @@ class CarriagesController < ApplicationController
   def create
     @carriage = @train.carriages.build(carriage_params)
     if @carriage.save
-      redirect_to @train, note: 'Carriage successfully created!'
+      redirect_to @train, notice: 'Carriage successfully created!'
     else
       render :new
     end
