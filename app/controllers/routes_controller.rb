@@ -37,9 +37,10 @@ class RoutesController < ApplicationController
 
   def add_railway_station
     station_route = RailwayStationsRoute.new(route_id: @route.id, railway_station_id: params[:railway_station_id],
-                                             position: params[:position])
+                                             position: params[:position], time_in: params[:time_in],
+                                             time_out: params[:time_out])
     @route.save if station_route.save
-    render :show
+    redirect_to @route
   end
 
   def remove_railway_station
@@ -47,7 +48,7 @@ class RoutesController < ApplicationController
     if station_route.destroy
       @route.save
     end
-    render :show
+    redirect_to @route
   end
 
   private

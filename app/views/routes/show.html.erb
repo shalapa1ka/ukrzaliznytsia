@@ -14,7 +14,8 @@
       <thead>
       <tr>
         <th>Title</th>
-        <th colspan="2">Position</th>
+        <th>Position</th>
+        <th>Time</th>
       </tr>
       </thead>
       <tbody>
@@ -24,10 +25,19 @@
           <td>
             <%= form_tag update_position_railway_station_path(station), method: :patch do %>
               <%= hidden_field_tag :route_id, @route.id %>
-              <%= number_field_tag :position, station.position_in(@route) %>
+              <%= number_field_tag :position, station.position_in(@route), max: RailwayStation.all.size %>
               <%= submit_tag :Apply %>
             <% end %>
           </td>
+          <td>
+            <%= form_tag update_time_railway_station_path(station), method: :patch do %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= time_field_tag :time_in, station.time_in(@route) %>
+              <%= time_field_tag :time_out, station.time_out(@route) %>
+              <%= submit_tag :Apply %>
+            <% end %>
+          </td>
+
           <td>
             <%= form_tag remove_railway_station_route_path(@route), method: :delete do %>
               <%= hidden_field_tag :route_id, @route.id %>
@@ -40,15 +50,20 @@
       </tbody>
     </table>
   <% end %>
-  <hr>
+</div>
+<hr>
+<div>
+  <strong>Add station to the route</strong>
   <%= form_tag add_railway_station_route_path, method: :post do %>
     <%= hidden_field_tag :route_id, @route.id %>
     <%= select_tag :railway_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title) %>
     <%= number_field_tag :position %>
+    <%= time_field_tag :time_in, must_be_empty: false %>
+    <%= time_field_tag :time_out %>
     <%= submit_tag :Add %>
   <% end %>
 </div>
-
+<hr>
 <div>
   <strong>Trains:</strong>
   <% if @route.trains.empty? %>

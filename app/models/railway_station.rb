@@ -16,8 +16,23 @@ class RailwayStation < ApplicationRecord
     station_route.update(position: position) if station_route
   end
 
+  def update_time(route, time_in, time_out)
+    station_route = station_route(route)
+    station_route.update(time_in: time_in, time_out:time_out) if station_route
+  end
+
   def position_in(route)
     station_route(route).try(:position)
+  end
+
+  def time_in(route)
+    time = station_route(route).try(:time_in)
+    time.strftime('%H:%M') unless time.blank?
+  end
+
+  def time_out(route)
+    time = station_route(route).try(:time_out)
+    time.strftime('%H:%M') unless time.blank?
   end
 
   protected
