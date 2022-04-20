@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tickets on train # <%= @train.number %></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <%= render @tickets %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Main', welcome_index_path %>

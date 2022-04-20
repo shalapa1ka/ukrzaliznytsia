@@ -1,0 +1,3 @@
+<h2><%= "Ticket # #{@ticket.id} for train #{@ticket.train.number}" %></h2>
+<strong><%= "Passenger name #{@ticket.name}" %></strong><br>
+<%= link_to 'Back', train_tickets_path(@ticket.train) %>
