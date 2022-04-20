@@ -39,15 +39,13 @@ class RoutesController < ApplicationController
     station_route = RailwayStationsRoute.new(route_id: @route.id, railway_station_id: params[:railway_station_id],
                                              position: params[:position], time_in: params[:time_in],
                                              time_out: params[:time_out])
-    @route.save if station_route.save
+    station_route.save
     redirect_to @route
   end
 
   def remove_railway_station
     station_route = RailwayStationsRoute.where(route_id: @route.id, railway_station_id: params[:station_id]).first
-    if station_route.destroy
-      @route.save
-    end
+    station_route.destroy
     redirect_to @route
   end
 

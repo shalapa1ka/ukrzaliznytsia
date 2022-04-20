@@ -11,6 +11,10 @@ class RailwayStation < ApplicationRecord
       order('railway_stations_routes.position').uniq
   }
 
+  scope :without_already_added, -> (stations){
+    where.not(id: stations)
+  }
+
   def update_position(route, position)
     station_route = station_route(route)
     station_route.update(position: position) if station_route
@@ -18,7 +22,7 @@ class RailwayStation < ApplicationRecord
 
   def update_time(route, time_in, time_out)
     station_route = station_route(route)
-    station_route.update(time_in: time_in, time_out:time_out) if station_route
+    station_route.update(time_in: time_in, time_out: time_out) if station_route
   end
 
   def position_in(route)

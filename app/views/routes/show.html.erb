@@ -56,9 +56,10 @@
   <strong>Add station to the route</strong>
   <%= form_tag add_railway_station_route_path, method: :post do %>
     <%= hidden_field_tag :route_id, @route.id %>
-    <%= select_tag :railway_station_id, options_from_collection_for_select(RailwayStation.all, :id, :title) %>
+    <%= select_tag :railway_station_id, options_from_collection_for_select(
+      RailwayStation.without_already_added(@route.railway_stations), :id, :title) %>
     <%= number_field_tag :position %>
-    <%= time_field_tag :time_in, must_be_empty: false %>
+    <%= time_field_tag :time_in %>
     <%= time_field_tag :time_out %>
     <%= submit_tag :Add %>
   <% end %>
