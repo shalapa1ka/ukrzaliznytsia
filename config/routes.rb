@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   resources :trains do
     resources :carriages, only: [:new, :create]
     resources :tickets, only: [:index, :create]
