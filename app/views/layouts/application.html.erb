@@ -13,11 +13,12 @@
 
 <body>
 <p id="notice" class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<p id="alert" class="alert"><%= alert %></p>
 
 <% if user_signed_in? %>
   <%= link_to 'Log out', destroy_user_session_path, method: :delete %> <br>
-  <%= "User: #{current_user.name} " %>
+  <%= "User: #{current_user.name} " %> <br>
+  <%= link_to 'Tickets list', tickets_path %>
 <% else %>
   <%= link_to 'Log in', new_user_session_path %>
 <% end %>
