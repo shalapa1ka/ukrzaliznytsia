@@ -30,13 +30,11 @@ class RailwayStation < ApplicationRecord
   end
 
   def time_in(route)
-    time = station_route(route).try(:time_in)
-    time.strftime('%H:%M') unless time.blank?
+    station_route(route)&.time_in&.strftime('%H:%M')
   end
 
   def time_out(route)
-    time = station_route(route).try(:time_out)
-    time.strftime('%H:%M') unless time.blank?
+    station_route(route)&.time_out&.strftime('%H:%M')
   end
 
   protected

@@ -19,7 +19,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = current_user.tickets.new(tickets_params)
-    if @ticket.save!
+    if @ticket.save
       redirect_to @ticket
     else
       render :new
