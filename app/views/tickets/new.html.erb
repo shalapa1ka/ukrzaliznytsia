@@ -1,0 +1,32 @@
+<h1>Confirmation</h1>
+<table>
+  <tr>
+    <td>Passenger:</td>
+    <td><%= current_user.name %></td>
+  </tr>
+  <tr>
+    <td>Route:</td>
+    <td><%= @route.title %></td>
+  </tr>
+  <tr>
+    <td>Departure:</td>
+    <td> <%= @from_station.title %> at <%= @from_station.time_out(@route) %> </td>
+  </tr>
+  <tr>
+    <td>Arriving:</td>
+    <td><%= @to_station.title %> at <%= @to_station.time_in(@route) %></td>
+  </tr>
+</table>
+
+<%= form_with scope: :ticket, url: tickets_path do |form| %>
+  <% render 'common/error', resource: @ticket %>
+
+  <div class="field">
+    <%= form.hidden_field :train_id, value: params[:train_id] %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :Buy %>
+  </div>
+<% end %>
+<%= link_to :Cancel, search_path %>

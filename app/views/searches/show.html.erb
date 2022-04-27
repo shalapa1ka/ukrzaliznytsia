@@ -1,0 +1,8 @@
+<h1>Tickets search</h1>
+
+<%= form_tag result_search_path, method: :get do %>
+  From <%= select_tag :from_station_id, options_from_collection_for_select(@stations.all, :id, :title) %>
+  To <%= select_tag :to_station_id, options_from_collection_for_select(@stations.all, :id, :title) %>
+  <%= submit_tag :Search %>
+<% end %>
+<%= link_to 'Main', root_path %>

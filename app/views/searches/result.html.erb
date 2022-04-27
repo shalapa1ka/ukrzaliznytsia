@@ -1,0 +1,39 @@
+<h1>Search result for request: <%= "#{@from_station.title} - #{@to_station.title}" %></h1>
+<h2>Routes</h2>
+<ul>
+  <% if @routes.empty? %>
+    <strong>There is no such route.</strong>
+  <% else %>
+    <% @routes.each do |route| %>
+      <strong>Route <%= route.title %></strong>
+      <h4>Trains</h4>
+      <table border="2">
+        <thead>
+        <tr>
+          <td>Number</td>
+          <td><%= @from_station.title %> departure time</td>
+          <td><%= @to_station.title %> arrive time</td>
+          <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <% route.trains.each do |train| %>
+          <tr>
+            <td><%= train.number %></td>
+            <td><%= @from_station.time_out(route) %></td>
+            <td><%= @to_station.time_in(route) %></td>
+            <td>
+              <%= link_to 'Buy ticket', new_ticket_path(
+                train_id: train.id,
+                route_id: route.id,
+                from: @from_station,
+                to: @to_station) %>
+            </td>
+          </tr>
+          </tbody>
+        <% end %>
+        </table>
+    <% end %>
+  <% end %>
+</ul>
+<%= link_to :Back, search_path %>
