@@ -1,0 +1,80 @@
+<div>
+  <strong>Title:</strong>
+  <%= @route.title %>
+</div>
+
+<div>
+  <strong>Stations:</strong>
+  <% if @route.railway_stations.empty? %>
+    Not specified
+  <% else %>
+    <table>
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Position</th>
+        <th>Time</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @route.railway_stations.ordered.each do |station| %>
+        <tr>
+          <td> <%= station.title %> </td>
+          <td>
+            <%= form_tag update_position_admin_railway_station_path(station), method: :patch do %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= number_field_tag :position, station.position_in(@route), max: RailwayStation.all.size %>
+              <%= submit_tag :Apply %>
+            <% end %>
+          </td>
+          <td>
+            <%= form_tag update_time_admin_railway_station_path(station), method: :patch do %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= time_field_tag :time_in, station.time_in(@route) %>
+              <%= time_field_tag :time_out, station.time_out(@route) %>
+              <%= submit_tag :Apply %>
+            <% end %>
+          </td>
+
+          <td>
+            <%= form_tag remove_railway_station_admin_route_path(@route), method: :delete do %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= hidden_field_tag :station_id, station.id %>
+              <%= submit_tag :Remove %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+<hr>
+<div>
+  <strong>Add station to the route</strong>
+  <%= form_tag add_railway_station_admin_route_path, method: :post do %>
+    <%= hidden_field_tag :route_id, @route.id %>
+    <%= select_tag :railway_station_id, options_from_collection_for_select(
+      RailwayStation.without_already_added(@route.railway_stations), :id, :title) %>
+    <%= number_field_tag :position %>
+    <%= time_field_tag :time_in %>
+    <%= time_field_tag :time_out %>
+    <%= submit_tag :Add %>
+  <% end %>
+</div>
+<hr>
+<div>
+  <strong>Trains:</strong>
+  <% if @route.trains.empty? %>
+    Not specified
+  <% else %>
+    <% @route.trains.each do |train| %>
+      <ul>
+        <li><%= train.number %></li>
+      </ul>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_admin_route_path(@route) %> |
+<%= link_to 'Back', admin_routes_path %>

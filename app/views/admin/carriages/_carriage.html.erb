@@ -1,0 +1,5 @@
+<tr>
+  <td><%= carriage.kind %> by <%= carriage.train.number %></td>
+  <td><%= link_to 'Show', [:admin, carriage] %></td>
+  <td><%= link_to 'Destroy', [:admin, carriage], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

@@ -1,3 +1,22 @@
-<h2><%= "Ticket # #{@ticket.id} for train #{@ticket.train.number}" %></h2>
-<strong><%= "Passenger name #{@ticket.name}" %></strong><br>
-<%= link_to 'Back', train_tickets_path(@ticket.train) %>
+<h2><%= "Ticket # #{@ticket.id} for train # #{@ticket.train.number}" %></h2>
+<table>
+  <tr>
+    <td>Passenger:</td>
+    <td><%= @ticket.user.name %></td>
+  </tr>
+  <tr>
+    <td>Route:</td>
+    <td><%= @ticket.train.route.title %></td>
+  </tr>
+  <tr>
+    <td>Departure:</td>
+    <td> <%= @ticket.train.route.railway_stations.first.title %> at
+      <%= @ticket.train.route.railway_stations.first.time_out(@ticket.train.route) %> </td>
+  </tr>
+  <tr>
+    <td>Arriving:</td>
+    <td><%= @ticket.train.route.railway_stations.last.title %> at
+      <%= @ticket.train.route.railway_stations.last.time_in(@ticket.train.route) %></td>
+  </tr>
+</table>
+<%= link_to 'Back', tickets_path %>
