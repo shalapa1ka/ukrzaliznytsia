@@ -1,5 +1,8 @@
-<h1>Greetings, Traveler!</h1>
-<%= link_to 'Stations list', admin_railway_stations_path %> <br>
-<%= link_to 'Trains list', admin_trains_path %> <br>
-<%= link_to 'Routes list', admin_routes_path %> <br>
-<%= link_to 'Search', search_path %> <br>
+<h1>Admin Panel</h1>
+<div class="list-group list-group-flush w-25">
+  <%= button_to 'Railway station list', admin_railway_stations_path, method: :get, class: 'list-group-item list-group-item-action m-2' %>
+  <%= button_to 'Trains list', admin_trains_path, method: :get, class: 'list-group-item list-group-item-action m-2' %>
+  <%= button_to 'Routes list', admin_routes_path, method: :get, class: 'list-group-item list-group-item-action m-2' %>
+  <%= button_to 'Search', search_path, method: :get, class: 'list-group-item list-group-item-action m-2' %>
+</div>
+</table>

@@ -1,27 +1,27 @@
 <%= form_with(model: [:admin, @train]) do |form| %>
   <%= render 'common/error', resource: @train %>
 
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
+  <div class="form-floating w-50 mt-2">
+    <%= form.text_field :number, class: 'form-control', id: 'floatingNumber', placeholder: :number %>
+    <%= form.label :number, for: 'floatingNumber' %>
   </div>
 
-  <div class="field">
+  <div class="row-cols-4 mt-2">
     <%= form.label :current_station %>
     <%= form.collection_select :railway_station_id, RailwayStation.all, :id, :title %>
   </div>
 
-  <div class="field">
+  <div class="row-cols-4 mt-2">
     <%= form.label :route %>
     <%= form.collection_select :route_id, Route.all, :id, :title %>
   </div>
 
-  <div class="field">
+  <div class="row-cols-4 mt-2">
     <%= form.label :reverse %>
-    <%= form.select :reverse, [true, false]%>
+    <%= form.select :reverse, [true, false] %>
   </div>
 
-  <div class="actions">
+  <div class="actions mt-2">
     <%= form.submit %>
   </div>
 <% end %>

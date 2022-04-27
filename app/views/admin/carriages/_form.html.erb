@@ -1,37 +1,37 @@
 <%= form_with(model: [:admin, @train, @carriage.becomes(Carriage)]) do |form| %>
   <%= render 'common/error', resource: @carriage %>
 
-  <div class="field">
+  <div class="field mt-2">
     <%= form.label :type %><br>
     <%= form.select :type, Carriage::TYPES, :include_blank => 'None Specified' %>
   </div>
 
-  <div class="field top-seats seats">
+  <div class="field top-seats seats mt-2">
     <%= form.label :top_seats %><br>
     <%= form.number_field :top_seats %>
   </div>
 
-  <div class="field bottom-seats seats">
+  <div class="field bottom-seats seats mt-2">
     <%= form.label :bottom_seats %><br>
     <%= form.number_field :bottom_seats %>
   </div>
 
-  <div class="field side-top-seats seats">
+  <div class="field side-top-seats seats mt-2">
     <%= form.label :side_top_seats %><br>
     <%= form.number_field :side_top_seats %>
   </div>
 
-  <div class="field side-bottom-seats seats">
+  <div class="field side-bottom-seats seats mt-2">
     <%= form.label :side_bottom_seats %><br>
     <%= form.number_field :side_bottom_seats %>
   </div>
 
-  <div class="field seating seats">
+  <div class="field seating seats mt-2">
     <%= form.label :seating %><br>
     <%= form.number_field :seating %>
   </div>
 
-  <div class="actions">
+  <div class="actions mt-2">
     <%= form.submit %>
   </div>
 <% end %>

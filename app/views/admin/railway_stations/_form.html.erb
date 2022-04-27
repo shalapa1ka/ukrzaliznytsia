@@ -1,12 +1,12 @@
 <%= form_with(model: [:admin, railway_station]) do |form| %>
-  <%=render 'common/error', resource: @railway_station %>
+  <%= render 'common/error', resource: @railway_station %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-floating w-25">
+    <%= form.text_field :title, class: 'form-control',id: 'floatingTitle',  placeholder: :title %>
+    <%= form.label :title, for: 'floatingTitle'%>
   </div>
 
-  <div class="actions">
+  <div class="actions mt-2">
     <%= form.submit %>
   </div>
 <% end %>
