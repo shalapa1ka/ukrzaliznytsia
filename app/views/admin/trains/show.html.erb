@@ -1,9 +1,9 @@
 <p>
-  <strong>Number: </strong>
+  <strong><%= t 'activerecord.attributes.train.number' %>: </strong>
   <%= @train.number %>
 </p>
 <p>
-  <strong>Route: </strong>
+  <strong><%=t 'activerecord.models.route' %>: </strong>
   <% if @train.route %>
     <%= @train.route.title %>
   <% else %>
@@ -11,7 +11,7 @@
   <% end %>
 </p>
 <p>
-  <strong>Station: </strong>
+  <strong><%= t 'activerecord.attributes.train.current_station' %>: </strong>
   <% if @train.current_station %>
     <%= @train.current_station.title %>
   <% else %>
@@ -19,7 +19,7 @@
   <% end %>
 </p>
 <div class="container">
-  <h4>Carriages</h4>
+  <h4><%= t 'activerecord.models.carriages' %></h4>
   <div class="list-group list-group-flush mb-3 mt-3">
     <% @train.carriages_ordered.each_with_index do |carriage| %>
       <%= button_to "#{carriage.number} #{carriage.type}", admin_carriage_path(carriage), method: :get,
@@ -29,6 +29,6 @@
 </div>
 
 
-<%= link_to 'New Carriage', new_admin_train_carriage_path(@train) %> <br>
-<%= link_to 'Edit', edit_admin_train_path(@train) %> |
-<%= link_to 'Back', admin_trains_path %>
+<%= link_to t('activerecord.attributes.carriage.new'), new_admin_train_carriage_path(@train) %> <br>
+<%= link_to t('edit'), edit_admin_train_path(@train) %> |
+<%= link_to t('back'), admin_trains_path %>

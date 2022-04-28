@@ -16,29 +16,27 @@
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <%= link_to :Ukrzaliznytsia, search_path, class: 'navbar-brand' %>
+      <%= link_to t('app'), search_path, class: 'navbar-brand' %>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+              <%= link_to t('log_out'), destroy_user_session_path, method: :delete, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Tickets list', tickets_path, class: 'nav-link' %>
+              <%= link_to t('activerecord.attributes.tickets.list'), tickets_path, class: 'nav-link' %>
             </li>
-            <% if current_user.admin? %>
-              <li class="nav-item">
-                <%= link_to 'Admin panel', root_path, class: 'nav-link' %>
-              </li>
-            <% end %>
+            <%= content_tag :li, class: 'nav-item' do %>
+              <%= link_to t('admin_panel'), root_path, class: 'nav-link' %>
+            <% end if current_user.admin? %>
           <% else %>
-            <li class="nav-item">
-              <%= link_to 'Log in', new_user_session_path, class: 'nav-link' %>
-            </li>
+          <li class="nav-item">
+            <%= link_to t('log_in'), new_user_session_path, class: 'nav-link' %>
+          </li>
           <% end %>
         </ul>
         <% if user_signed_in? %>
-          <div class="navbar-text">Hello, <%= current_user.name %></div>
+          <div class="navbar-text"><%= t 'hello' + ', ' + current_user.name %></div>
         <% end %>
       </div>
     </div>
@@ -65,6 +63,12 @@
 <footer class="footer mt-auto py-3 bg-light">
   <div class="container text-center">
     <span class="text-muted">&copy; Bohdan Popovych 2022</span>
+    <%= content_tag :p do %>
+      <%= link_to 'Switch to Russian', locale: :ru %>
+    <% end unless current_page?(locale: :ru) %>
+    <%= content_tag :p do %>
+      <%= link_to 'Switch to English', locale: :en %>
+    <% end unless current_page?(locale: :en) %>
   </div>
 </footer>
 </body>

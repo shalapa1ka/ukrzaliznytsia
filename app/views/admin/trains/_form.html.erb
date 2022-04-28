@@ -22,6 +22,6 @@
   </div>
 
   <div class="actions mt-2">
-    <%= form.submit %>
+    <%= form.submit t('activerecord.attributes.train.form.submit', action: @train.new_record? ? 'Создать' : 'Изменить')%>
   </div>
 <% end %>

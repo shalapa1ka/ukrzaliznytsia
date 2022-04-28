@@ -1,0 +1,39 @@
+ru:
+  activerecord:
+    models:
+      railway_station: 'Станция'
+      train: 'Поезд'
+      route: 'Маршрут'
+      search: 'Поиск'
+      tickets: 'Билет'
+      carriage: 'Вагон'
+      carriages: 'Вагоны'
+    attributes:
+      railway_station:
+        list: 'Список станций'
+        description: 'Управляйте всеми станция'
+      train:
+        list: 'Список поездов'
+        description: 'Управляйте всеми поездами'
+        current_station: 'Текущая станция'
+        reverse: 'Сортировка вагонов'
+        route: 'Маршрут'
+        number: 'Номер'
+        new: 'Новый поезд'
+        create: 'Создать поезд'
+        edit: 'Изменить поезд'
+        form:
+          submit: '%{action} поезд'
+      route:
+        list: 'Список маршрутов'
+        description: 'Управляйте всеми маршрутами'
+      search:
+        list: 'Поиск билетов'
+        description: 'Находитие и покупайте нужные вам билеты'
+      tickets:
+        list: 'Список билетов'
+      carriage:
+        new: 'Создать вагон'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
