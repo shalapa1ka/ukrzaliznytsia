@@ -37,13 +37,16 @@
             </li>
           <% end %>
         </ul>
+        <% if user_signed_in? %>
+          <div class="navbar-text">Hello, <%= current_user.name %></div>
+        <% end %>
       </div>
     </div>
   </nav>
 </header>
 
 <!-- Page content -->
-<main class="flex-shrink-0 mt-5">
+<main class="mt-5">
   <div class="container">
     <% flash.each do |type, msg| %>
       <% if type == "notice" %>
@@ -55,7 +58,7 @@
       <% end %>
     <% end %>
     <%= yield %>
-    </div>
+  </div>
 </main>
 
 <!-- Footer -->
