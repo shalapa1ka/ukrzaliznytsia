@@ -12,7 +12,6 @@ import 'bootstrap'
 import '../../assets/stylesheets/application.scss'
 import Alert from 'bootstrap/js/dist/alert'
 
-require('inline_edit_rw_station_title')
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
