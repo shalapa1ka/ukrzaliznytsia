@@ -14,5 +14,6 @@ ru:
   back: 'Назад'
   show: 'Показать'
   edit: 'Изменить'
+  create: 'Создать'
   destroy: 'Удалить'
   not_specified: 'Не указано'

@@ -8,8 +8,8 @@ en:
         list: 'Trains list'
         description: 'Bla bla'
         new: 'New train'
-        create: 'Creating train'
-        edit: 'Editing train'
+        form:
+          submit: '%{action} train'
       route:
         list: 'Routes list'
         description: 'Bla bla'
