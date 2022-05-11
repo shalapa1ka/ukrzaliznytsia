@@ -12,11 +12,6 @@ import 'bootstrap'
 import '../../assets/stylesheets/application.scss'
 import Alert from 'bootstrap/js/dist/alert'
 
-document.addEventListener("turbolinks:load", () => {
-    $('[data-toggle="tooltip"]').tooltip()
-    $('[data-toggle="popover"]').popover()
-})
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
