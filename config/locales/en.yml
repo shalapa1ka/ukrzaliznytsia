@@ -30,4 +30,16 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app: 'Ukrzaliznytsia'
+  hello: 'Hello'
+  email: 'Email'
+  password: 'Password'
+  remember_me: 'Remember me'
+  log_in: 'Sing in'
+  log_out: 'Sing out'
+  sing_up: 'Sing up'
+  forgot_password: 'Forgot password?'
+  log_in_title: 'Please, sing in'
+  admin_panel: 'Admin panel'
+  edit: 'Edit'
+  create: 'Create'

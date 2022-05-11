@@ -1,5 +1,36 @@
-<h1>Greetings, Traveler!</h1>
-<%= link_to 'Stations list', admin_railway_stations_path %> <br>
-<%= link_to 'Trains list', admin_trains_path %> <br>
-<%= link_to 'Routes list', admin_routes_path %> <br>
-<%= link_to 'Search', search_path %> <br>
+<h1><%= t 'admin_panel' %></h1>
+<div class="card-group">
+  <div class="card border-dark mb-3" style="width: 16rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= t 'activerecord.attributes.railway_station.list' %></h5>
+      <p class="card-text"><%= t 'activerecord.attributes.railway_station.description' %></p>
+      <%= link_to t('go_to'), admin_railway_stations_path, class: 'btn btn-primary stretched-link' %>
+    </div>
+  </div>
+  <div class="card border-dark mb-3" style="width: 16rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= t 'activerecord.attributes.train.list' %></h5>
+      <p class="card-text"><%= t 'activerecord.attributes.train.description' %></p>
+      <%= link_to t('go_to'), admin_trains_path, class: 'btn btn-primary stretched-link' %>
+    </div>
+  </div>
+  <div class="card border-dark mb-3" style="width: 16rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= t 'activerecord.attributes.route.list' %></h5>
+      <p class="card-text"><%= t 'activerecord.attributes.route.list' %></p>
+      <%= link_to t('go_to'), admin_routes_path, class: 'btn btn-primary stretched-link' %>
+    </div>
+  </div>
+  <div class="card border-dark mb-3" style="width: 16rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= t 'activerecord.attributes.search.list' %></h5>
+      <p class="card-text"><%= t 'activerecord.attributes.search.description' %></p>
+      <%= link_to t('go_to'), search_path, class: 'btn btn-primary stretched-link' %>
+    </div>
+  </div>
+</div>
+<%#= button_to 'Tickets list', admin_trains_path, method: :get, class: 'list-group-item list-group-item-action m-2' %>
+<%#= button_to 'Routes list', admin_routes_path, method: :get, class: 'list-group-item list-group-item-action m-2' %>
+<%#= button_to 'Search', search_path, method: :get, class: 'list-group-item list-group-item-action m-2' %>
+</div>
+</table>

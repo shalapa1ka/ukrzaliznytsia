@@ -10,20 +10,66 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+<body class="d-flex flex-column h-100">
 
-<body>
-<p id="notice" class="notice"><%= notice %></p>
-<p id="alert" class="alert"><%= alert %></p>
+<header class="p-3">
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <%= link_to t('app'), search_path, class: 'navbar-brand' %>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to t('log_out'), destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to t('activerecord.attributes.tickets.list'), tickets_path, class: 'nav-link' %>
+            </li>
+            <%= content_tag :li, class: 'nav-item' do %>
+              <%= link_to t('admin_panel'), root_path, class: 'nav-link' %>
+            <% end if current_user.admin? %>
+          <% else %>
+          <li class="nav-item">
+            <%= link_to t('log_in'), new_user_session_path, class: 'nav-link' %>
+          </li>
+          <% end %>
+        </ul>
+        <% if user_signed_in? %>
+          <div class="navbar-text"><%= t 'hello' + ', ' + current_user.name %></div>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+</header>
 
-<% if user_signed_in? %>
-  <%= link_to 'Log out', destroy_user_session_path, method: :delete %> <br>
-  <%= "User: #{current_user.name} " %> <br>
-  <%= link_to 'Tickets list', tickets_path %>
-<% else %>
-  <%= link_to 'Log in', new_user_session_path %>
-<% end %>
+<!-- Page content -->
+<main class="mt-5">
+  <div class="container">
+    <% flash.each do |type, msg| %>
+      <% if type == "notice" %>
+        <div class="alert alert-success "><%= msg %></div>
+      <% elsif type == "alert" %>
+        <div class="alert alert-danger "><%= msg %></div>
+      <% else %>
+        <div class='alert alert-<%= "#{type}" %>'><%= msg %></div>
+      <% end %>
+    <% end %>
+    <%= yield %>
+  </div>
+</main>
 
-<%= yield %>
-<%= render 'layouts/footer' %>
+<!-- Footer -->
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container text-center">
+    <span class="text-muted">&copy; Bohdan Popovych 2022</span>
+    <%= content_tag :p do %>
+      <%= link_to 'Switch to Russian', locale: :ru %>
+    <% end unless current_page?(locale: :ru) %>
+    <%= content_tag :p do %>
+      <%= link_to 'Switch to English', locale: :en %>
+    <% end unless current_page?(locale: :en) %>
+  </div>
+</footer>
 </body>
 </html>

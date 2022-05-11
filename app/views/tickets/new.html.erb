@@ -1,5 +1,5 @@
 <h1>Confirmation</h1>
-<table>
+<table class="table table-hover w-25">
   <tr>
     <td>Passenger:</td>
     <td><%= current_user.name %></td>
@@ -18,14 +18,14 @@
   </tr>
 </table>
 
-<%= form_with scope: :ticket, url: tickets_path do |form| %>
+<%= form_with scope: :ticket, url: @ticket do |form| %>
   <% render 'common/error', resource: @ticket %>
 
   <div class="field">
     <%= form.hidden_field :train_id, value: params[:train_id] %>
   </div>
 
-  <div class="actions">
+  <div class="actions row-cols-4 mb-2">
     <%= form.submit :Buy %>
   </div>
 <% end %>

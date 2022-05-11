@@ -1,6 +1,22 @@
 <tr>
-  <td><%= train.number %></td>
-  <td><%= link_to 'Show', [:admin, train] %></td>
-  <td><%= link_to 'Edit', edit_admin_train_path(train) %></td>
-  <td><%= link_to 'Destroy', [:admin, train], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td>
+    <div id="train_number_<%= train.id %>">
+      <%= train.number %>
+    </div>
+    <%= form_with model: [:admin, train], html: { style: "display: none",
+                                                  id: "edit_train_#{train.id}"} do |form| %>
+      <%= render 'common/error', resource: train %>
+      <div class="form-floating w-25 mt-2">
+        <%= form.text_field :number, class: 'form-control', id: 'floatingNumber', placeholder: :number %>
+        <%= form.label :number, for: 'floatingNumber' %>
+        <div class="actions mt-2">
+          <%= form.submit %>
+        </div>
+      </div>
+    <% end %>
+  </td>
+  <td><%= link_to t('edit_number'), '', class: 'edit_train_title', data: { train_id: train.id } %></td>
+  <td><%= link_to t('show'), [:admin, train] %></td>
+  <td><%= link_to t('edit'), edit_admin_train_path(train) %></td>
+  <td><%= link_to t('destroy'), [:admin, train], method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

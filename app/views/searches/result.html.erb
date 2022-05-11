@@ -2,18 +2,17 @@
 <h2>Routes</h2>
 <ul>
   <% if @routes.empty? %>
-    <strong>There is no such route.</strong>
+    <h3>There is no such route.</h3>
   <% else %>
     <% @routes.each do |route| %>
-      <strong>Route <%= route.title %></strong>
+      <h3>Route <%= route.title %></h3>
       <h4>Trains</h4>
-      <table border="2">
+      <table class="table table-hover">
         <thead>
         <tr>
           <td>Number</td>
           <td><%= @from_station.title %> departure time</td>
           <td><%= @to_station.title %> arrive time</td>
-          <td></td>
         </tr>
         </thead>
         <tbody>

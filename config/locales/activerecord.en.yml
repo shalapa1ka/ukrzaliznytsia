@@ -1,0 +1,22 @@
+en:
+  activerecord:
+    attributes:
+      railway_station:
+        list: 'Railway stations list'
+        description: 'Bla bla'
+      train:
+        list: 'Trains list'
+        description: 'Bla bla'
+        new: 'New train'
+        form:
+          submit: '%{action} train'
+      route:
+        list: 'Routes list'
+        description: 'Bla bla'
+      search:
+        list: 'Searching page'
+        description: 'Bla bla'
+      tickets:
+        list: 'Tickets list'
+      carriage:
+        new: 'New carriage'
