@@ -41,3 +41,5 @@ en:
   forgot_password: 'Forgot password?'
   log_in_title: 'Please, sing in'
   admin_panel: 'Admin panel'
+  edit: 'Edit'
+  create: 'Create'
