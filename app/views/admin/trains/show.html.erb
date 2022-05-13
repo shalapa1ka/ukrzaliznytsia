@@ -21,7 +21,7 @@
 <div class="container">
   <h4><%= t 'activerecord.models.carriages' %></h4>
   <div class="list-group list-group-flush mb-3 mt-3">
-    <% @train.carriages_ordered.each_with_index do |carriage| %>
+    <% @train.carriages.ordered(@train).each_with_index do |carriage| %>
       <%= button_to "#{carriage.number} #{carriage.type}", admin_carriage_path(carriage), method: :get,
                     class: 'list-group-item list-group-item-action' %>
     <% end %>

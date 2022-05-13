@@ -5,6 +5,8 @@ class Carriage < ApplicationRecord
   validates :train, :type, :number, presence: true
   validates :number, uniqueness: { scope: :train_id }
 
+  scope :ordered, -> (train){ order("number #{train.reverse ? 'DESC' : 'ASC'}") }
+
   before_validation :set_number
 
   private
