@@ -10,7 +10,6 @@ class Ticket < ApplicationRecord
   def route_title
     train.route.title
   end
-
   private
 
   def send_buy

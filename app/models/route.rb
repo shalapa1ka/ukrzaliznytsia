@@ -5,11 +5,10 @@ class Route < ApplicationRecord
   has_many :railway_stations_routes
   has_many :railway_stations, through: :railway_stations_routes
 
-  scope :include_station, -> (station, position = 0) {
+  scope :include_station, -> (station) {
     joins(:railway_stations)
-      .where("railway_stations.id = #{station.id}")
-      .where("position > #{position}")
-      .pluck(:id)
+    .where("railway_stations.id = #{station.id}")
+    .pluck(:id)
   }
 
   def self.check_position(routes, from, to)
