@@ -5,7 +5,7 @@
     </div>
     <%= render 'form', railway_station: railway_station, hidden: true %>
   </td>
-  <td><%= link_to 'Show', admin_railway_station_path(railway_station), class: 'link-primary' %></td>
-  <td><%= link_to 'Edit', '', class: "edit_station", data: { station_id: railway_station.id } %></td>
-  <td><%= link_to 'Destroy', [:admin, railway_station], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'Show', admin_railway_station_path(railway_station), class: 'btn btn-primary' %></td>
+  <td><%= link_to 'Edit', '', class: "edit_station btn btn-secondary", data: { station_id: railway_station.id } %></td>
+  <td><%= link_to 'Destroy', [:admin, railway_station], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
 </tr>

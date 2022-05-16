@@ -1,5 +1,6 @@
 <h1>Railway Stations</h1>
 
+<%= paginate @railway_stations %>
 <table class="table table-hover">
   <thead>
   <tr>
@@ -12,6 +13,7 @@
   </tbody>
 </table>
 
+<%= paginate @railway_stations %>
 <br>
 
 <%= link_to 'New Railway Station', new_admin_railway_station_path %>

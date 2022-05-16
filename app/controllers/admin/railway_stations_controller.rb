@@ -3,7 +3,7 @@ class Admin::RailwayStationsController < Admin::BaseController
   before_action :find_route, only: %i[update_position update_time]
 
   def index
-    @railway_stations = RailwayStation.all
+    @railway_stations = RailwayStation.all.page params[:page]
   end
 
   def show; end
